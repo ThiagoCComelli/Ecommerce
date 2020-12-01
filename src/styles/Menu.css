@@ -1,0 +1,34 @@
+.mainMenu{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    transition: 1s;
+    transform: translate(100vw,0);
+}
+
+.mainMenuCircle{
+    background-color: red;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    clip-path: circle(70% at left -10%);
+    transition: 1s;
+}
+
+.mainMenuContents{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 80px;
+}
+
+.mainMenuContentsItems{
+    width: 100%;
+    height: 100%;
+    background-color: #161616;
+    border: 3px solid black;
+    border-radius: 50px;
+    box-shadow: inset 0px 0px 200px -100px rgba(0, 0, 0, 0.253);
+}

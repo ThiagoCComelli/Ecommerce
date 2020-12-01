@@ -1,0 +1,149 @@
+.mainHero{
+    position: absolute;
+    background-color: #161616;
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
+    transition: 1s;
+    overflow: show;
+}
+
+.mainHeroCircle{
+    background-color: red;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    clip-path: circle(70% at right -10%);
+    transition: 1s;
+}
+
+.mainHeroContents{
+    padding-left: 6%;
+    top: 25%;
+    width: 40%;
+    height: 60%;
+    position: absolute;
+}
+
+.mainPizza{
+    max-height: 50%;
+    width: 50%;
+    position: absolute;
+    right: 5%;
+    top: 20%;
+}
+
+.mainHeroContent{
+    width: 100%;
+    color: #fff;
+    margin: 20px;
+}
+
+.mainHeroContent h1{
+    font-size: 5vw;
+}
+.mainHeroContent p{
+    font-size: 1.5vw;
+}
+
+.mainHeroBtns{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.mainHeroMakeOrder{
+    height: 40px;
+    width: 80%;
+    border-style: none;
+    color: aliceblue;
+    background-color: #161616;
+    border: solid #000000 2px;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 83px -14px rgba(0, 0, 0, 0.445);
+    text-transform: uppercase;
+    transition: .2s;
+}
+
+
+.mainHeroMakeOrder:hover{
+    background-color: red;
+    scale: 1.1;
+}
+
+.mainHeroFooter{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.mainHeroFooter img{
+    cursor: pointer;
+    height: 100%;
+    margin: 20px;
+}
+
+.mainHeroFooterNamesBorder{
+    width: 0;
+    height: 2px;
+    background-color: red;
+    position: absolute;
+    bottom: 0;
+    transition: 1s;
+}
+
+.mainHeroFooterNames{
+    position: relative;
+    width: 100px;
+    height: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mainHeroFooterNames:hover .mainHeroFooterNamesBorder{
+    width: 100%;
+}
+
+@media only screen and (max-width: 850px){
+    .mainHeroContents{
+        position: absolute;
+        left: 0;
+        padding-top: 30%;
+        width: 90%;
+        height: 100%;
+    }
+    .mainHeroContent h1{
+        font-size: 7vw;
+    }
+    .mainHeroContent p{
+        font-size: 3vw;
+    }
+    .mainHeroBtns{
+        max-width: 100%;
+    }
+    .mainHeroMakeOrder{
+        border-color: red;
+    }
+    .mainPizza{
+        transform: scaleX(-1);
+        top: 10%;
+        left: 20%;
+    }
+
+    .mainHeroFooter span, .mainHeroFooter div{
+        display: none;
+    }
+    .mainHeroFooter{
+        width: 100vw;
+        height: 6vh;
+    }
+}

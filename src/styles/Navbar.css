@@ -1,0 +1,84 @@
+.mainNavbar{
+    position: absolute;
+    width: 100vw;
+    height: 70px;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 70px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.mainNavbarList{
+    display: flex;
+    list-style: none;
+}
+.mainNavbarList li{
+    margin-right: 70px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .2s;
+    position: relative;
+}
+.mainNavbarList li:hover{
+    color: #fff;
+    scale: 1.1;
+}
+.mainNavbarList li::before{
+    content: "";
+    width: 0;
+    height: 2px;
+    position: absolute;
+    background-color: #fff;
+    z-index: -1;
+    bottom: 0;
+    transition: .2s;
+
+}
+.mainNavbarList li:hover::before{
+    width: 100%;
+}
+
+.mainNavbarH1{
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    position: relative;
+    cursor: pointer;
+}
+
+.mainNavbarH1other{
+    position: absolute;
+    width: 0px;    
+    transition: 1s;
+    bottom: 0;
+}
+
+.mainNavbarH1:hover .mainNavbarH1other{
+    background-color: red;
+    width: 100%;
+    height: 3px;
+}
+
+.mainNavbarH1:not(:hover) .mainNavbarH1other{
+    background-color: red;
+    width: 0;
+    height: 3px;
+}
+
+@media only screen and (max-width: 850px){
+    .mainNavbar{
+    }
+    
+    .mainNavbar ul{
+        display: none;
+    }
+
+    .mainNavbarH1 {
+        position: absolute;
+        right: 5%;
+    }
+    
+}
