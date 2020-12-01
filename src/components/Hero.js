@@ -4,10 +4,10 @@ import UserContext from '../middleware/context'
 import '../styles/Hero.css'
 
 function Hero(){
-    const { setUserData} = useContext(UserContext)
+    const {userData,setUserData} = useContext(UserContext)
 
     const showOrderInterface = () => {
-        setUserData('mainMenu')
+        setUserData({...userData,'actualScreen':'mainMenu','lastScreen':'mainHero'})
     }
 
     return(

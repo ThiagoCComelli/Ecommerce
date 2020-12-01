@@ -3,14 +3,14 @@ import UserContext from '../middleware/context'
 import '../styles/Navbar.css'
 
 function Navbar(){
-    const {setUserData} = useContext(UserContext)
+    const {userData,setUserData} = useContext(UserContext)
 
     const handleScroll = () => {
         console.log(window.pageYOffset)
     }
 
     const backToMain = () => {
-        setUserData('mainHero')
+        setUserData({...userData,'actualScreen':'mainHero','lastScreen':userData['actualScreen']})
     }
 
     useEffect(() => {

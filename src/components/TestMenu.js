@@ -3,21 +3,18 @@ import UserContext from '../middleware/context'
 
 import '../styles/Menu.css'
 
-function Menu(props){
+function MenuTest(props){
     const {userData,setUserData} = useContext(UserContext)
 
     return(
         <>
-            <div className="mainMenu screen">
+            <div className="mainMenuTest screen">
                 <div className="mainMenuCircle"></div>
                 <div className="mainMenuContents">
                     <div className="mainMenuContentsItems">
                         <button onClick={() => {
-                            setUserData({...userData,'actualScreen':'mainHero','lastScreen':'mainMenu','op':false})
+                            setUserData({...userData,'actualScreen':'mainMenu','lastScreen':'mainMenuTest','op':true})
                         }}>voltar</button>
-                        <button onClick={() => {
-                            setUserData({...userData,'actualScreen':'mainMenuTest','lastScreen':'mainMenu','op':true})
-                        }}>avancar</button>
                     </div>
                 </div>
             </div>
@@ -25,4 +22,4 @@ function Menu(props){
     )
 }
 
-export default Menu
+export default MenuTest
