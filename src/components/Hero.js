@@ -1,10 +1,10 @@
-import React,{useState,useContext} from 'react'
+import React,{useContext} from 'react'
 import UserContext from '../middleware/context'
 
 import '../styles/Hero.css'
 
 function Hero(){
-    const {userData, setUserData} = useContext(UserContext)
+    const { setUserData} = useContext(UserContext)
 
     const showOrderInterface = () => {
         setUserData('mainMenu')

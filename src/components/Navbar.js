@@ -3,7 +3,7 @@ import UserContext from '../middleware/context'
 import '../styles/Navbar.css'
 
 function Navbar(){
-    const {userData, setUserData} = useContext(UserContext)
+    const {setUserData} = useContext(UserContext)
 
     const handleScroll = () => {
         console.log(window.pageYOffset)
