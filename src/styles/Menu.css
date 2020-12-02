@@ -5,13 +5,6 @@
     transition: 1s;
     transform: translate(100vw,0);
 }
-.mainMenuTest{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    transition: 1s;
-    transform: translate(100vw,0);
-}
 
 .mainMenuCircle{
     background-color: red;
@@ -35,7 +28,7 @@
     width: 100%;
     height: 100%;
     background-color: #161616;
-    border: 3px solid black;
+    border: 3px solid red;
     border-radius: 20px;
     box-shadow: 0px 0px 72px 7px rgba(0,0,0,1);
 }

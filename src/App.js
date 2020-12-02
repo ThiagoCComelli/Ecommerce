@@ -1,13 +1,11 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Menu from './components/Menu'
-import MenuTest from './components/TestMenu'
 import UserContext from './middleware/context'
 import React,{useState, useEffect} from 'react'
 
 function App() {
   const [userData, setUserData] = useState({'actualScreen':'mainHero','lastScreen':'mainHero','mainHero':0,'mainMenu':1})
-  // const [getLog,setLog] = useState(false)
 
   useEffect(() => {
     var allElements = [].slice.call(document.getElementsByClassName('screen'))
@@ -31,7 +29,6 @@ function App() {
         <Navbar />
         <Hero />
         <Menu />
-        <MenuTest />
       </UserContext.Provider>
     </>
   );

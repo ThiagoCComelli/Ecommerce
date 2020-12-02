@@ -11,9 +11,41 @@
     text-transform: uppercase;
 }
 
+.mainNavbarBasket{
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    right: 110px;
+    transition: 1s;
+}
+
+.mainNavbarBasket img{
+    cursor: pointer;
+    transition: .2s;
+}
+
+.mainNavbarBasket img:hover{
+    scale: 1.2;
+}
+
+
+.mainNavbarBasketCountBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    color: red;
+    transition: .2s;
+}
+
 .mainNavbarList{
     display: flex;
     list-style: none;
+    transition: 1s;
 }
 .mainNavbarList li{
     margin-right: 70px;

@@ -7,6 +7,7 @@
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
     outline: none;
+    user-select: none;
 }
 body{
     background-color: #161616;
