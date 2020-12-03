@@ -1,10 +1,16 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect, useContext} from 'react'
+import ContextBasket from '../middleware/contextBasket'
 
 import '../styles/MenuItem.css'
 
 function MenuItem(props){
-    const [infos,setInfos] = useState({quantity:0,image:props.image,title:props.title,description:props.description,ingredients:props.ingredients,price:props.price})
-    
+    const [infos,setInfos] = useState(props.props)
+    const {userBasket,setUserBasket} = useContext(ContextBasket)
+
+    useEffect(() => {
+        setUserBasket({...userBasket,[`id-${infos._id}`]:infos})
+    },[infos])
+
     return(
         <>
             <div className="menuItemMain">
@@ -22,10 +28,13 @@ function MenuItem(props){
                     </div>
                     <div className="menuItemBtns">
                         <span>{infos.quantity !== 0 ? `Quantidade: ${infos.quantity}` : false}</span>
-                        <button onClick={() => {setInfos({...infos,quantity:infos.quantity+1})}}>Adicionar</button>
+                        <button onClick={() => {
+                            setInfos({...infos,quantity:infos.quantity+1})
+                        }}>Adicionar</button>
                         <button onClick={() => {
                             if(infos.quantity > 0){
-                                setInfos({...infos,quantity:infos.quantity-1})}
+                                setInfos({...infos,quantity:infos.quantity-1})
+                            }
                             }}>Remover</button>
                     </div>
                 </div>

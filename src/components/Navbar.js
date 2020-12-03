@@ -1,13 +1,12 @@
-import React,{useEffect,useContext} from 'react'
-import UserContext from '../middleware/context'
+import React,{useEffect,useContext, useState} from 'react'
+import ContextUser from '../middleware/contextScreens'
+import ContextBasket from '../middleware/contextBasket'
 import '../styles/Navbar.css'
 
 function Navbar(){
-    const {userData,setUserData} = useContext(UserContext)
-
-    const handleScroll = () => {
-        console.log(window.pageYOffset)
-    }
+    const {userData,setUserData} = useContext(ContextUser)
+    const {userBasket} = useContext(ContextBasket)
+    const [count,setCount] = useState(0)
 
     const backToMain = () => {
         setUserData({...userData,'actualScreen':'mainHero','lastScreen':userData['actualScreen']})
@@ -25,12 +24,19 @@ function Navbar(){
             elementBasket.style.transform = 'translate(0,-10vh)'
             elementBasket.style.scale = '0'
         }
-        // eslint-disable-next-line
-    },userData['actualScreen'])
+
+    },[userData['actualScreen']])
 
     useEffect(() => {
-        window.addEventListener('scroll',handleScroll)
-    },[])
+        let count_ = 0
+
+        Object.keys(userBasket).map((item) => {
+            count_ += userBasket[item].quantity
+        })
+        
+        setCount(count_)
+        
+    },[userBasket])
 
     return(
         <>
@@ -46,7 +52,7 @@ function Navbar(){
                 </ul>
                 <div className="mainNavbarBasket">
                     <img id="mainNavbarBasket" alt="shooping basket" src={`${process.env.PUBLIC_URL}/images/basket.svg`}></img>
-                    <div className="mainNavbarBasketCountBox">0</div>
+                    <div className="mainNavbarBasketCountBox">{count}</div>
                 </div>
             </div>
         </>

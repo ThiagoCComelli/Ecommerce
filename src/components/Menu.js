@@ -1,10 +1,32 @@
-import React,{useContext} from 'react'
-import UserContext from '../middleware/context'
+import React,{useContext, useEffect} from 'react'
+import ContextUser from '../middleware/contextScreens'
+import ContextBasket from '../middleware/contextBasket'
+import ContextItems from '../middleware/contextItems'
 import MenuItem from './MenuItem'
 import '../styles/Menu.css'
 
 function Menu(){
-    const {userData,setUserData} = useContext(UserContext)
+    const {userData,setUserData} = useContext(ContextUser)
+    const {userBasket,setUserBasket} = useContext(ContextBasket)
+    const {userItems} = useContext(ContextItems)
+
+    useEffect(() => {
+        var obj = userBasket
+        var remove = []
+
+        Object.keys(userBasket).map((item) => {
+            if(userBasket[item].quantity === 0){
+                remove.push(item)
+            }
+        })
+
+        remove.forEach((item) => {
+            delete obj[item]
+        })
+
+        setUserBasket(obj)
+
+    },[userBasket])
 
     return(
         <>
@@ -12,13 +34,9 @@ function Menu(){
                 <div className="mainMenuCircle"></div>
                 <div className="mainMenuContents">
                     <div className="mainMenuContentsItems">
-                        <MenuItem price="49.90" ingredients="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida." description="Lorem ipsum \n dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta." title="Lorem ipsum dolor." image="pizzaMenu.jpg"/>
-                        <MenuItem price="49.90" ingredients="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida." description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta." title="Lorem ipsum dolor." image="pizzaMenu.jpg"/>
-                        <MenuItem price="49.90" ingredients="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida." description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta." title="Lorem ipsum dolor." image="pizzaMenu.jpg"/>
-                        <MenuItem price="49.90" ingredients="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida." description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta." title="Lorem ipsum dolor." image="pizzaMenu.jpg"/>
-                        <MenuItem price="49.90" ingredients="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida." description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta." title="Lorem ipsum dolor." image="pizzaMenu.jpg"/>
-                        <MenuItem price="49.90" ingredients="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida." description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta." title="Lorem ipsum dolor." image="pizzaMenu.jpg"/>
-                        <MenuItem price="49.90" ingredients="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida." description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta." title="Lorem ipsum dolor." image="pizzaMenu.jpg"/>
+                        {Object.keys(userItems).map((element_) => {
+                            return <MenuItem key={element_} props={userItems[element_]}/>
+                        })}
                     </div>
                 </div>
                 <div onClick={() => {

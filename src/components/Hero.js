@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import UserContext from '../middleware/context'
+import UserContext from '../middleware/contextScreens'
 
 import '../styles/Hero.css'
 

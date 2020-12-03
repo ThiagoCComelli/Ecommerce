@@ -1,11 +1,16 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Menu from './components/Menu'
-import UserContext from './middleware/context'
+import UserContext from './middleware/contextScreens'
+import ContextItems from './middleware/contextItems'
+import ContextBasket from './middleware/contextBasket'
+import MenuItems from './middleware/items'
 import React,{useState, useEffect} from 'react'
 
 function App() {
   const [userData, setUserData] = useState({'actualScreen':'mainHero','lastScreen':'mainHero','mainHero':0,'mainMenu':1})
+  const [userItems, setUserItems] = useState(MenuItems)
+  const [userBasket, setUserBasket] = useState({})
 
   useEffect(() => {
     var allElements = [].slice.call(document.getElementsByClassName('screen'))
@@ -26,9 +31,13 @@ function App() {
   return (
     <>
       <UserContext.Provider value={{userData,setUserData}}>
+      <ContextItems.Provider value={{userItems,setUserItems}}>
+      <ContextBasket.Provider value={{userBasket,setUserBasket}}>
         <Navbar />
         <Hero />
         <Menu />
+      </ContextBasket.Provider>
+      </ContextItems.Provider>
       </UserContext.Provider>
     </>
   );
