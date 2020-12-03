@@ -8,8 +8,10 @@
     scroll-behavior: smooth;
     outline: none;
     user-select: none;
+    
 }
 body{
     background-color: #161616;
     overflow: hidden;
+    scrollbar-color: rgba(255, 0, 0, 0.39) rgb(0, 0, 0); 
 }
