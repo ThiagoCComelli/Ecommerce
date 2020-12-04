@@ -1,12 +1,14 @@
 import React,{useEffect,useContext, useState} from 'react'
 import ContextUser from '../middleware/contextScreens'
 import ContextBasket from '../middleware/contextBasket'
+import ContextForceUpdate from '../middleware/contextForceUpdate'
 import Basket from './Basket'
 import '../styles/Navbar.css'
 
 function Navbar(){
     const {userData,setUserData} = useContext(ContextUser)
     const {userBasket} = useContext(ContextBasket)
+    const {userForceUpdate,setForceUpdate} = useContext(ContextForceUpdate)
     const [count,setCount] = useState(0)
 
     const backToMain = () => {
@@ -37,7 +39,7 @@ function Navbar(){
         
         setCount(count_)
         
-    },[userBasket])
+    },[userForceUpdate])
 
     const openBasket = () => {
         var element = document.getElementsByClassName('mainBasket')[0]

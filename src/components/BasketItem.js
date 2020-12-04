@@ -1,9 +1,29 @@
 import React,{useContext, useState, useEffect} from 'react'
 import ContextBasket from '../middleware/contextBasket'
+import ContextForceUpdate from '../middleware/contextForceUpdate'
 import '../styles/BasketItem.css'
 
-function Basket(props){
+function BasketItem(props){
     const {userBasket,setUserBasket} = useContext(ContextBasket)
+    const {userForceUpdate,setForceUpdate} = useContext(ContextForceUpdate)
+
+    const removeItem = () => {
+        var obj = userBasket
+        var remove = []
+
+        Object.keys(obj).map((item) => {
+            if(item === `id${props.props._id}`){
+                remove.push(item)
+            }
+        })
+
+        remove.forEach(item => {
+            delete obj[item]
+        })
+
+        setForceUpdate(userForceUpdate + 1)
+        setUserBasket(obj)
+    }
 
     return(
         <>
@@ -18,7 +38,7 @@ function Basket(props){
                     </div>
                     <div className="mainBasketBoxDelete">
                         <span>{props.props.quantity}x R${props.props.price} = R${(props.props.quantity*props.props.price).toFixed(2)}</span>
-                        <button>Remover</button>
+                        <button onClick={removeItem}>Remover</button>
                     </div>
                 </div>
             </div>
@@ -26,4 +46,4 @@ function Basket(props){
     )
 }
 
-export default Basket
+export default BasketItem

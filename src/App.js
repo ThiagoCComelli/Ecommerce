@@ -4,12 +4,14 @@ import Menu from './components/Menu'
 import UserContext from './middleware/contextScreens'
 import ContextItems from './middleware/contextItems'
 import ContextBasket from './middleware/contextBasket'
+import ContextForceUpdate from './middleware/contextForceUpdate'
 import MenuItems from './middleware/items'
 import React,{useState, useEffect} from 'react'
 
 function App() {
   const [userData, setUserData] = useState({'actualScreen':'mainHero','lastScreen':'mainHero','mainHero':0,'mainMenu':1})
   const [userItems, setUserItems] = useState(MenuItems)
+  const [userForceUpdate,setForceUpdate] = useState(0)
   const [userBasket, setUserBasket] = useState({})
 
   useEffect(() => {
@@ -33,9 +35,11 @@ function App() {
       <UserContext.Provider value={{userData,setUserData}}>
       <ContextItems.Provider value={{userItems,setUserItems}}>
       <ContextBasket.Provider value={{userBasket,setUserBasket}}>
+      <ContextForceUpdate.Provider value={{userForceUpdate,setForceUpdate}}>
         <Navbar />
         <Hero />
         <Menu />
+      </ContextForceUpdate.Provider>
       </ContextBasket.Provider>
       </ContextItems.Provider>
       </UserContext.Provider>

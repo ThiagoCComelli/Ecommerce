@@ -2,12 +2,14 @@ import React,{useContext, useEffect} from 'react'
 import ContextUser from '../middleware/contextScreens'
 import ContextBasket from '../middleware/contextBasket'
 import ContextItems from '../middleware/contextItems'
+import ContextForceUpdate from '../middleware/contextForceUpdate'
 import MenuItem from './MenuItem'
 import '../styles/Menu.css'
 
 function Menu(){
     const {userData,setUserData} = useContext(ContextUser)
     const {userBasket,setUserBasket} = useContext(ContextBasket)
+    const {userForceUpdate,setForceUpdate} = useContext(ContextForceUpdate)
     const {userItems} = useContext(ContextItems)
 
     useEffect(() => {
@@ -24,9 +26,10 @@ function Menu(){
             delete obj[item]
         })
 
-        setUserBasket(obj)
+        setUserBasket(obj)        
+    },[userForceUpdate])
 
-    },[userBasket])
+
 
     return(
         <>
@@ -38,13 +41,22 @@ function Menu(){
                             return <MenuItem key={element_} props={userItems[element_]}/>
                         })}
                     </div>
+                    <div className="mainMenuBtns">
+                        <div onClick={() => {
+                                setUserData({...userData,'actualScreen':'mainHero','lastScreen':userData['actualScreen']})
+                            }} className="mainMenuLeftArrow">
+                            <img alt="Return button" src={`${process.env.PUBLIC_URL}/images/leftArrow.svg`}></img>
+                            <span>Voltar</span>
+                        </div>
+                        <div onClick={() => {
+                                setUserData({...userData,'actualScreen':'mainHero','lastScreen':userData['actualScreen']})
+                            }} className="mainMenuRightArrow">
+                            <span>Finalizar</span>
+                            <img alt="Return button" src={`${process.env.PUBLIC_URL}/images/rightArrow.svg`}></img>
+                        </div>
+                    </div>
                 </div>
-                <div onClick={() => {
-                        setUserData({...userData,'actualScreen':'mainHero','lastScreen':userData['actualScreen']})
-                    }} className="mainMenuLeftArrow">
-                    <img alt="Return button" src={`${process.env.PUBLIC_URL}/images/leftArrow.svg`}></img>
-                    Voltar
-                </div>
+                
             </div>
         </>
     )

@@ -55,7 +55,7 @@ function items(){
             price: '69.90'
         },
         'id6': {
-            _id: 3,
+            _id: 6,
             quantity: 0,
             image: 'pizzaMenu.jpg',
             title: 'Brocolis Refogado',
@@ -64,7 +64,7 @@ function items(){
             price: '49.90'
         },
         'id7': {
-            _id: 4,
+            _id: 7,
             quantity: 0,
             image: 'pizzaMenu.jpg',
             title: 'Estrogonofe de Frango',
@@ -73,7 +73,7 @@ function items(){
             price: '59.90'
         },
         'id8': {
-            _id: 5,
+            _id: 8,
             quantity: 0,
             image: 'pizzaMenu.jpg',
             title: 'Molho de Tomate com Cebola',

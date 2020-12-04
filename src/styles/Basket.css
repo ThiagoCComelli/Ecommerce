@@ -1,5 +1,5 @@
 .mainBasket{
-    scale: 1;
+    scale: 0;
     position: absolute;
     width: 600px;
     min-height: 100px;
@@ -15,14 +15,14 @@
     overflow-x: hidden;
 }
 
-.mainBasket::before{
+/* .mainBasket::before{
     content: '';
     position: absolute;
     width: 120%;
     height: 120%;
     top: -60px;
     left: -60px;
-}
+} */
 
 .mainBasketBox{
     width: 100%;

@@ -1,11 +1,14 @@
 import React,{useContext,useEffect,useState} from 'react'
 import ContextBasket from '../middleware/contextBasket'
+import ContextForceUpdate from '../middleware/contextForceUpdate'
 import BasketItem from './BasketItem'
 
 import '../styles/Basket.css'
 
 function Basket(){
     const {userBasket, setUserBasket} = useContext(ContextBasket)
+    const {userForceUpdate,setForceUpdate} = useContext(ContextForceUpdate)
+
     const [stats,setStats] = useState(0)
 
     const closeBasket = () => {
@@ -16,12 +19,13 @@ function Basket(){
     useEffect(() => {
         var value_ = 0
 
-        {Object.keys(userBasket).map((item) => {
+        Object.keys(userBasket).map((item) => {
             value_ += userBasket[item].quantity * userBasket[item].price
-        })}
+        })
 
         setStats(value_)
-    },[userBasket])
+
+    },[userForceUpdate])
 
     return(
         <>
@@ -31,6 +35,7 @@ function Basket(){
                 </div>
                 <div className="mainBasketBox">
                     {Object.keys(userBasket).map((item) => {
+                        if(item === 'length') return
                         return <BasketItem key={userBasket[item]._id} props={userBasket[item]} />
                     })}
                 </div>
