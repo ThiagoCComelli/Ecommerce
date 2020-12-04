@@ -1,6 +1,7 @@
 import React,{useEffect,useContext, useState} from 'react'
 import ContextUser from '../middleware/contextScreens'
 import ContextBasket from '../middleware/contextBasket'
+import Basket from './Basket'
 import '../styles/Navbar.css'
 
 function Navbar(){
@@ -38,6 +39,11 @@ function Navbar(){
         
     },[userBasket])
 
+    const openBasket = () => {
+        var element = document.getElementsByClassName('mainBasket')[0]
+        element.style.scale = '1'
+    }
+
     return(
         <>
             <div className="mainNavbar">
@@ -51,8 +57,9 @@ function Navbar(){
                     <li>Sobre</li>
                 </ul>
                 <div className="mainNavbarBasket">
-                    <img id="mainNavbarBasket" alt="shooping basket" src={`${process.env.PUBLIC_URL}/images/basket.svg`}></img>
+                    <img onClick={openBasket} id="mainNavbarBasket" alt="shooping basket" src={`${process.env.PUBLIC_URL}/images/basket.svg`}></img>
                     <div className="mainNavbarBasketCountBox">{count}</div>
+                    <Basket />
                 </div>
             </div>
         </>

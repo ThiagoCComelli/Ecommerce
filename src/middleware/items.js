@@ -4,7 +4,7 @@ function items(){
             _id: 0,
             quantity: 0,
             image: 'pizzaMenu.jpg',
-            title: 'lorem ipsum dolor',
+            title: 'Calabresa',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta.',
             ingredients: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida.',
             price: '49.90'
@@ -13,7 +13,7 @@ function items(){
             _id: 1,
             quantity: 0,
             image: 'pizzaMenu.jpg',
-            title: 'lorem ipsum dolor',
+            title: '4 Queijos',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta.',
             ingredients: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida.',
             price: '59.90'
@@ -22,7 +22,7 @@ function items(){
             _id: 2,
             quantity: 0,
             image: 'pizzaMenu.jpg',
-            title: 'lorem ipsum dolor',
+            title: 'Lombinho com Catupiry',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta.',
             ingredients: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida.',
             price: '69.90'
@@ -31,7 +31,7 @@ function items(){
             _id: 3,
             quantity: 0,
             image: 'pizzaMenu.jpg',
-            title: 'lorem ipsum dolor',
+            title: 'Portuguesa',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta.',
             ingredients: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida.',
             price: '49.90'
@@ -40,7 +40,7 @@ function items(){
             _id: 4,
             quantity: 0,
             image: 'pizzaMenu.jpg',
-            title: 'lorem ipsum dolor',
+            title: 'Lombo',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta.',
             ingredients: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida.',
             price: '59.90'
@@ -49,7 +49,7 @@ function items(){
             _id: 5,
             quantity: 0,
             image: 'pizzaMenu.jpg',
-            title: 'lorem ipsum dolor',
+            title: 'Frango Desfiado',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta.',
             ingredients: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida.',
             price: '69.90'
@@ -58,7 +58,7 @@ function items(){
             _id: 3,
             quantity: 0,
             image: 'pizzaMenu.jpg',
-            title: 'lorem ipsum dolor',
+            title: 'Brocolis Refogado',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta.',
             ingredients: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida.',
             price: '49.90'
@@ -67,7 +67,7 @@ function items(){
             _id: 4,
             quantity: 0,
             image: 'pizzaMenu.jpg',
-            title: 'lorem ipsum dolor',
+            title: 'Estrogonofe de Frango',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta.',
             ingredients: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida.',
             price: '59.90'
@@ -76,7 +76,7 @@ function items(){
             _id: 5,
             quantity: 0,
             image: 'pizzaMenu.jpg',
-            title: 'lorem ipsum dolor',
+            title: 'Molho de Tomate com Cebola',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pulvinar nisl, sed tempus risus tincidunt ut. Donec euismod augue vitae leo venenatis, et tincidunt dui porta.',
             ingredients: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida.',
             price: '69.90'
