@@ -10,7 +10,7 @@ function MenuItem(props){
     const {userForceUpdate,setForceUpdate} = useContext(ContextForceUpdate)
 
     useEffect(() => {
-        // setForceUpdate(userForceUpdate + 1)
+        setForceUpdate(userForceUpdate + 1)
         setUserBasket({...userBasket,[`id${infos._id}`]:infos})
     },[infos])
 
