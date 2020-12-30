@@ -13,7 +13,7 @@ function MenuItem(props){
             <div onClick={() => {infos.category === 'food' ? props.function(infos) : null}} className="menuItemMain" id="hover">
                 <div className="menuItemContents">
                     <div className="menuItemImage">
-                        <img alt="Product image" src={`${process.env.PUBLIC_URL}/images/${infos.image}`}></img>                   
+                        <img alt="Product image" src={`${process.env.PUBLIC_URL}/images/pizzas/${infos.image}`}></img>                   
                     </div>
                     <div className="menuItemDescContents">
                         <h2>{infos.title}</h2>

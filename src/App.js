@@ -4,12 +4,13 @@ import 'react-notifications-component/dist/theme.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Menu from './components/Menu'
+import Payment from './components/PaymentMenu'
 import UserContext from './middleware/contextScreens'
 import BasketContext from './middleware/contextBasket'
 import React,{useState, useEffect} from 'react'
 
 function App() {
-  const [userData, setUserData] = useState({'actualScreen':'mainHero','lastScreen':'mainHero','mainHero':0,'mainMenu':1})
+  const [userData, setUserData] = useState({'actualScreen':'mainHero','lastScreen':'mainHero','mainHero':0,'mainMenu':1,'mainPaymentMenu':2})
   const [userBasket, setUserBasket] = useState([])
 
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
         <Navbar />
         <Hero />
         <Menu />
+        <Payment />
       </BasketContext.Provider>
       </UserContext.Provider>
     </>

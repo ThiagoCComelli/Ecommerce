@@ -20,7 +20,7 @@ function Navbar(){
     useEffect(() => {
         var elementList = document.getElementsByClassName('mainNavbarList')[0]
         var elementBasket = document.getElementsByClassName('mainNavbarBasket')[0]
-        if(userData['actualScreen'] !== 'mainHero'){
+        if(userData['actualScreen'] !== 'mainHero' && userData['actualScreen'] !== 'mainPaymentMenu'){
             elementBasket.style.scale = '1'
             elementBasket.style.transform = 'translate(0,0)'
             elementList.style.transform = 'translate(100%,0)'

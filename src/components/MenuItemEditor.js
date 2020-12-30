@@ -7,11 +7,12 @@ import '../styles/MenuItemEditor.css'
 
 function MenuItemEditor(props){
     const [infos] = useState(props.state)
+    const [obs,setObs] = useState('')
     const [foodItems,setFoodItems] = useState([])
     const {userBasket, setUserBasket} = useContext(BasketContext)
 
     const addBasket = () => {
-        var obj = {...infos,additional:foodItems}
+        var obj = {...infos,additional:foodItems,obs:obs}
         setUserBasket([...userBasket,{...obj,uuid:uuidv4()}])
         notification({title:"Item adicionado ao carrinho!",type:"success"})
         props.function(undefined)
@@ -30,7 +31,7 @@ function MenuItemEditor(props){
             <>
             <div className="mainAdItem">
                 <div className="mainAdItemImage">
-                    <img alt="Product image" src={`${process.env.PUBLIC_URL}/images/${infos.image}`}></img>
+                    <img alt="Product image" src={`${process.env.PUBLIC_URL}/images/pizzas/${infos.image}`}></img>
                 </div>
                 <div className="mainAdItemDetails">
                     <p>{propsAd.props.product}</p>
@@ -75,7 +76,7 @@ function MenuItemEditor(props){
             <div className="menuItemMain">
                 <div className="menuItemContents">
                     <div className="menuItemImage" onClick={() => {props.function(undefined)}}>
-                        <img alt="Product image" src={`${process.env.PUBLIC_URL}/images/${infos.image}`}></img>                   
+                        <img alt="Product image" src={`${process.env.PUBLIC_URL}/images/pizzas/${infos.image}`}></img>                   
                     </div>
                     <div className="menuItemDescContents">
                         <h2>{infos.title}</h2>
@@ -95,7 +96,9 @@ function MenuItemEditor(props){
             </div>
             <h2>Observações:</h2>
             <div className="menuItemEditorConfig">
-                <textarea spellCheck="false" placeholder="Escreva aqui suas necessidades!"></textarea>
+                <textarea onChange={(e) => {
+                    setObs(e.target.value)
+                }} spellCheck="false" placeholder="Escreva aqui suas necessidades!"></textarea>
             </div>
             <div className="menuItemEditorBttns">
                 <button onClick={() => {props.function(undefined)}}>Cardápio</button>

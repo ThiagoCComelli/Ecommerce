@@ -47,7 +47,7 @@ function Menu(){
                         </div>
                         {userBasket.length !== 0 ? (
                             <div onClick={() => {
-                                setUserData({...userData,'actualScreen':'mainHero','lastScreen':userData['actualScreen']})
+                                setUserData({...userData,'actualScreen':'mainPaymentMenu','lastScreen':userData['actualScreen']})
                             }} className="mainMenuRightArrow">
                             <span>Finalizar</span>
                             <img alt="Return button" src={`${process.env.PUBLIC_URL}/images/rightArrow.svg`}></img>
