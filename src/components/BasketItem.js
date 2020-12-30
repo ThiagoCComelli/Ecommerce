@@ -1,28 +1,46 @@
-import React,{useContext, useState, useEffect} from 'react'
-import ContextBasket from '../middleware/contextBasket'
-import ContextForceUpdate from '../middleware/contextForceUpdate'
+import React,{useState,useEffect,useContext} from 'react'
+import BasketContext from '../middleware/contextBasket'
 import '../styles/BasketItem.css'
 
 function BasketItem(props){
-    const {userBasket,setUserBasket} = useContext(ContextBasket)
-    const {userForceUpdate,setForceUpdate} = useContext(ContextForceUpdate)
+    const [price,setPrice] = useState(0)
+    const {userBasket, setUserBasket} = useContext(BasketContext)
 
-    const removeItem = () => {
-        var obj = userBasket
-        var remove = []
+    useEffect(() => {
+        var val = 0
+        if(props.props.category === 'food'){
+            val += props.props.price
+            props.props.additional.map((x) => {
+                val += x.price*x.qty
+            })
+        }else{
+            var exist = userBasket.find((x) => x.title === props.props.title)
+            val += exist.qty*exist.price
+        }
+        
+        setPrice(price+val)
+    },[])
 
-        Object.keys(obj).map((item) => {
-            if(item === `id${props.props._id}`){
-                remove.push(item)
-            }
-        })
+    const deleteItem = () => {
+        setUserBasket(userBasket.filter((x) => x.uuid !== props.props.uuid))
+    }
 
-        remove.forEach(item => {
-            delete obj[item]
-        })
+    const getAdditional = () => {
+        if(props.props.category === 'food'){
+            var string = 'Adicionais: '
+            props.props.additional.map((x) => {
+                string += `${x.product} x${x.qty}; `
+            })
+            return string
+        }
+        return null
+    }
 
-        setForceUpdate(userForceUpdate + 1)
-        setUserBasket(obj)
+    const getQty = () => {
+        const exist = userBasket.find((x) => x.title === props.props.title)
+        if(exist){
+            return exist.qty
+        }
     }
 
     return(
@@ -35,10 +53,11 @@ function BasketItem(props){
                     <div className="mainBasketBoxTitle">
                         <h4>{props.props.title}</h4>
                         <span>{props.props.ingredients}</span>
+                        <p>{getAdditional()}</p>
                     </div>
                     <div className="mainBasketBoxDelete">
-                        <span>{props.props.quantity}x R${props.props.price} = R${(props.props.quantity*props.props.price).toFixed(2)}</span>
-                        <button onClick={removeItem}>Remover</button>
+                        <span>R${props.props.price} {props.props.category === 'food' ? `+ Adicionais = R$${price.toFixed(2)}` : `x${getQty()}`}</span>
+                        <button onClick={() => {deleteItem()}}>Remover</button>
                     </div>
                 </div>
             </div>

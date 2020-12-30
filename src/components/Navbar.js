@@ -1,19 +1,21 @@
 import React,{useEffect,useContext, useState} from 'react'
-import ContextUser from '../middleware/contextScreens'
-import ContextBasket from '../middleware/contextBasket'
-import ContextForceUpdate from '../middleware/contextForceUpdate'
+import UserContext from '../middleware/contextScreens'
+import BasketContext from '../middleware/contextBasket'
 import Basket from './Basket'
 import '../styles/Navbar.css'
 
 function Navbar(){
-    const {userData,setUserData} = useContext(ContextUser)
-    const {userBasket} = useContext(ContextBasket)
-    const {userForceUpdate,setForceUpdate} = useContext(ContextForceUpdate)
+    const {userData,setUserData} = useContext(UserContext)
+    const {userBasket, setUserBasket} = useContext(BasketContext)
     const [count,setCount] = useState(0)
 
     const backToMain = () => {
         setUserData({...userData,'actualScreen':'mainHero','lastScreen':userData['actualScreen']})
     }
+
+    useEffect(() => {
+        setCount(userBasket.length)
+    },[userBasket])
 
     useEffect(() => {
         var elementList = document.getElementsByClassName('mainNavbarList')[0]
@@ -29,17 +31,6 @@ function Navbar(){
         }
 
     },[userData['actualScreen']])
-
-    useEffect(() => {
-        let count_ = 0
-
-        Object.keys(userBasket).map((item) => {
-            count_ += userBasket[item].quantity
-        })
-        
-        setCount(count_)
-        
-    },[userForceUpdate])
 
     const openBasket = () => {
         var element = document.getElementsByClassName('mainBasket')[0]

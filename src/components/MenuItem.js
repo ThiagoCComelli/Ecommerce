@@ -1,34 +1,16 @@
-import React,{useState,useEffect, useContext} from 'react'
-import ContextBasket from '../middleware/contextBasket'
-import ContextForceUpdate from '../middleware/contextForceUpdate'
+import {v4 as uuidv4} from 'uuid'
+import React,{useState,useEffect,useContext} from 'react'
+import BasketContext from '../middleware/contextBasket'
 
 import '../styles/MenuItem.css'
 
 function MenuItem(props){
     const [infos,setInfos] = useState(props.props)
-    const {userBasket,setUserBasket} = useContext(ContextBasket)
-    const {userForceUpdate,setForceUpdate} = useContext(ContextForceUpdate)
-
-    useEffect(() => {
-        setForceUpdate(userForceUpdate + 1)
-        setUserBasket({...userBasket,[`id${infos._id}`]:infos})
-    },[infos])
-
-    useEffect(() => {
-        var op = true
-        Object.keys(userBasket).map((item) => {
-            if(item === `id${infos._id}`){
-                op = false
-            }
-        })
-        if(op){
-            infos.quantity = 0
-        }
-    },[userForceUpdate])
+    const {userBasket,setUserBasket} = useContext(BasketContext)
 
     return(
         <>
-            <div className="menuItemMain">
+            <div onClick={() => {infos.category === 'food' ? props.function(infos) : null}} className="menuItemMain" id="hover">
                 <div className="menuItemContents">
                     <div className="menuItemImage">
                         <img alt="Product image" src={`${process.env.PUBLIC_URL}/images/${infos.image}`}></img>                   
@@ -41,19 +23,22 @@ function MenuItem(props){
                     <div className="menuItemPrice">
                         <strong>R${infos.price}</strong>
                     </div>
-                    <div className="menuItemBtns">
-                        <span>{infos.quantity !== 0 ? `Quantidade: ${infos.quantity}` : false}</span>
-                        <button onClick={() => {
-                            console.log(this)
-                            setInfos({...infos,quantity:infos.quantity+1})
-                        }}>Adicionar</button>
-                        <button onClick={() => {
-                            if(infos.quantity > 0){
-                                setInfos({...infos,quantity:infos.quantity-1})
-                            }
-                            setInfos({...infos,quantity:0})
-                            }}>Remover</button>
-                    </div>
+                    {infos.category === 'drink' ? 
+                        <div className="menuItemBtns">
+                            <button onClick={() => {
+                                var exist = userBasket.find((x) => infos.title === x.title)
+                                if(exist){
+                                    setUserBasket(
+                                        userBasket.map((x) => 
+                                            x.title === infos.title ? {...exist,qty: exist.qty + 1} : x
+                                        )
+                                    )
+                                }else{
+                                    setUserBasket([...userBasket, {...infos, qty: 1, uuid:uuidv4()}])
+                                }
+                            }}>Adicionar</button>
+                            <button>Remover</button>
+                        </div> : null} 
                 </div>
             </div>
         </>

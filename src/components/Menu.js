@@ -1,35 +1,34 @@
-import React,{useContext, useEffect} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import ContextUser from '../middleware/contextScreens'
-import ContextBasket from '../middleware/contextBasket'
-import ContextItems from '../middleware/contextItems'
-import ContextForceUpdate from '../middleware/contextForceUpdate'
+import BasketContext from '../middleware/contextBasket'
+import MenuItems from '../middleware/items'
 import MenuItem from './MenuItem'
+import MenuItemEditor from './MenuItemEditor'
 import '../styles/Menu.css'
 
 function Menu(){
     const {userData,setUserData} = useContext(ContextUser)
-    const {userBasket,setUserBasket} = useContext(ContextBasket)
-    const {userForceUpdate,setForceUpdate} = useContext(ContextForceUpdate)
-    const {userItems} = useContext(ContextItems)
+    const {userBasket} = useContext(BasketContext)
+    const [screenOn,setScreenOn] = useState(undefined)
 
-    useEffect(() => {
-        var obj = userBasket
-        var remove = []
-
-        Object.keys(userBasket).map((item) => {
-            if(userBasket[item].quantity === 0){
-                remove.push(item)
-            }
-        })
-
-        remove.forEach((item) => {
-            delete obj[item]
-        })
-
-        setUserBasket(obj)        
-    },[userForceUpdate])
-
-
+    const loadItems = () => {
+        return(
+            <>
+            <h2>Pizzas:</h2>
+            {MenuItems.map((element_) => {
+                if(element_.category === 'food'){
+                    return <MenuItem function={setScreenOn} state={screenOn} key={element_._id} props={element_}/>
+                }
+            })}
+            <h2>Bebidas:</h2>
+            {MenuItems.map((element_) => {
+                if(element_.category === 'drink'){
+                    return <MenuItem function={setScreenOn} state={screenOn} key={element_._id} props={element_}/>
+                }
+            })}
+            </>
+        )
+    }
 
     return(
         <>
@@ -37,9 +36,7 @@ function Menu(){
                 <div className="mainMenuCircle"></div>
                 <div className="mainMenuContents">
                     <div className="mainMenuContentsItems">
-                        {Object.keys(userItems).map((element_) => {
-                            return <MenuItem key={element_} props={userItems[element_]}/>
-                        })}
+                        {screenOn ? <MenuItemEditor function={setScreenOn} state={screenOn}/> : loadItems()}
                     </div>
                     <div className="mainMenuBtns">
                         <div onClick={() => {
@@ -48,12 +45,15 @@ function Menu(){
                             <img alt="Return button" src={`${process.env.PUBLIC_URL}/images/leftArrow.svg`}></img>
                             <span>Voltar</span>
                         </div>
-                        <div onClick={() => {
+                        {userBasket.length !== 0 ? (
+                            <div onClick={() => {
                                 setUserData({...userData,'actualScreen':'mainHero','lastScreen':userData['actualScreen']})
                             }} className="mainMenuRightArrow">
                             <span>Finalizar</span>
                             <img alt="Return button" src={`${process.env.PUBLIC_URL}/images/rightArrow.svg`}></img>
-                        </div>
+                            </div>
+                        ) : null}
+                        
                     </div>
                 </div>
                 
